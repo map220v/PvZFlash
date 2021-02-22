@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="copyAssets">
+    <output-path>$PROJECT_DIR$/out/production/PvZ</output-path>
+    <root id="root">
+      <element id="dir-copy" path="$PROJECT_DIR$/prebuiltAssets" />
+    </root>
+  </artifact>
+</component>
