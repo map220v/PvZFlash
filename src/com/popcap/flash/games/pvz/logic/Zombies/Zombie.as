@@ -1329,7 +1329,7 @@ package com.popcap.flash.games.pvz.logic.Zombies
          {
             return 0;
          }
-         var aPosY:Number = mBoard.GetPosYBasedOnRow(this.mPosX + 40,theRow) - 30;
+         var aPosY:Number = mBoard.GetPosYBasedOnRow(theRow) - 30;
          return aPosY;
       }
       
@@ -2106,7 +2106,7 @@ package com.popcap.flash.games.pvz.logic.Zombies
       
       public function RiseFromGrave(theCol:int, theRow:int) : void
       {
-         this.mPosX = mBoard.GridToPixelX(theCol,mRow);
+         this.mPosX = mBoard.GridToPixelX(theCol);
          this.mPosY = this.GetPosYBasedOnRow(theRow);
          mRow = theRow;
          mX = int(this.mPosX);

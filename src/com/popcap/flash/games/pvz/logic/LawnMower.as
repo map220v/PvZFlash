@@ -83,7 +83,7 @@ package com.popcap.flash.games.pvz.logic
          this.mBoard = theBoard;
          this.mRow = theRow;
          this.mPosX = -108;
-         this.mPosY = this.mBoard.GetPosYBasedOnRow(this.mPosX + 28,theRow) + 10;
+         this.mPosY = this.mBoard.GetPosYBasedOnRow(theRow) + 10;
          this.mDead = false;
          this.mMowerState = MOWER_READY;
          this.mVisible = true;
@@ -216,7 +216,7 @@ package com.popcap.flash.games.pvz.logic
             aSpeed = TodCommon.TodAnimateCurveFloat(CHOMP_TIME,0,this.mChompCounter,aSpeed,1,TodCommon.CURVE_BOUNCE_SLOW_MIDDLE);
          }
          this.mPosX = this.mPosX + aSpeed;
-         this.mPosY = this.mBoard.GetPosYBasedOnRow(this.mPosX + 28,this.mRow) + 16;
+         this.mPosY = this.mBoard.GetPosYBasedOnRow(this.mRow) + 16;
          if(this.mPosX > BOARD_WIDTH)
          {
             this.Die();

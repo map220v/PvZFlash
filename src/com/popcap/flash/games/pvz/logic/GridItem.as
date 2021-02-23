@@ -128,8 +128,8 @@ package com.popcap.flash.games.pvz.logic
       public function DrawScaryPot(g:Graphics2D) : void
       {
          var aImageCol:int = this.mGridItemState;
-         var aXPos:int = this.mBoard.GridToPixelX(this.mGridX,this.mGridY) - 2;
-         var aYPos:int = this.mBoard.GridToPixelY(this.mGridX,this.mGridY) - 17;
+         var aXPos:int = this.mBoard.GridToPixelX(this.mGridX) - 2;
+         var aYPos:int = this.mBoard.GridToPixelY(this.mGridY) - 17;
          this.mScaryPotImage.frame = aImageCol;
          g.drawImage(this.mScaryPotImage,aXPos,aYPos);
          if(this.mHighlighted)
@@ -179,8 +179,8 @@ package com.popcap.flash.games.pvz.logic
       {
          var aGridCelOffsetX:int = this.mBoard.mGridCelOffset[this.mGridX][this.mGridY][0];
          var aGridCelOffsetY:int = this.mBoard.mGridCelOffset[this.mGridX][this.mGridY][1];
-         var aXPos:int = this.mBoard.GridToPixelX(this.mGridX,this.mGridY) + aGridCelOffsetX;
-         var aYPos:int = this.mBoard.GridToPixelY(this.mGridX,this.mGridY) + aGridCelOffsetY + 40;
+         var aXPos:int = this.mBoard.GridToPixelX(this.mGridX) + aGridCelOffsetX;
+         var aYPos:int = this.mBoard.GridToPixelY(this.mGridY) + aGridCelOffsetY + 40;
          var anEffect:ParticleSystem = this.app.particleManager.spawnParticleSystem(PVZParticles.PARTICLE_GRAVESTONERISE);
          anEffect.setPosition(aXPos,aYPos);
          this.mBoard.mRenderManager.add(new ParticleRenderable(anEffect,Board.RENDER_LAYER_PARTICLE));
@@ -233,8 +233,8 @@ package com.popcap.flash.games.pvz.logic
          }
          var aSrcRect:Rectangle = new Rectangle(aCelWidth * aGraveCol,aCelHeight * aGraveRow + aTopClip,aCelWidth,aVisibleHeight - aExtraBottomClip - aTopClip);
          var aSrcRectDirt:Rectangle = new Rectangle(aCelWidth * aGraveCol,aCelHeight * aGraveRow,aCelWidth,aVisibleHeightDirt);
-         var aXPos:int = this.mBoard.GridToPixelX(this.mGridX,this.mGridY) + 2 + aGridCelOffsetX;
-         var aYPos:int = this.mBoard.GridToPixelY(this.mGridX,this.mGridY) - 5 + aGridCelOffsetY;
+         var aXPos:int = this.mBoard.GridToPixelX(this.mGridX) + 2 + aGridCelOffsetX;
+         var aYPos:int = this.mBoard.GridToPixelY(this.mGridY) - 5 + aGridCelOffsetY;
          g.pushState();
          g.setClipRect(aXPos + this.mBoard.x,aYPos + aTopClip,53,52 - aTopClip);
          g.drawImage(this.mGravestoneImage,aXPos,aYPos + 61 - aVisibleHeight);

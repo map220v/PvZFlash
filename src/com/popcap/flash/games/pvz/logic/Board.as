@@ -1978,7 +1978,7 @@ package com.popcap.flash.games.pvz.logic
          }
       }
       
-      public function GridToPixelX(theGridX:int, theGridY:int) : int
+      public function GridToPixelX(theGridX:int) : int
       {
          return theGridX * 54 + LAWN_XMIN;
       }
@@ -2419,11 +2419,9 @@ package com.popcap.flash.games.pvz.logic
          return this.mCursorObject.mType;
       }
       
-      public function GridToPixelY(theGridX:int, theGridY:int) : int
+      public function GridToPixelY(theGridY:int) : int
       {
-         var aResult:int = 0;
-         aResult = theGridY * 67 + LAWN_YMIN;
-         return aResult;
+         return theGridY * 67 + LAWN_YMIN;
       }
       
       public function AddZombieInRow(theZombieType:int, theRow:int, theFromWave:int) : Zombie
@@ -2746,9 +2744,9 @@ package com.popcap.flash.games.pvz.logic
          return 10;
       }
       
-      public function GetPosYBasedOnRow(thePosX:Number, theRow:int) : Number
+      public function GetPosYBasedOnRow(theRow:int) : Number
       {
-         return Number(this.GridToPixelY(0,theRow));
+         return Number(this.GridToPixelY(theRow));
       }
       
       public function InitZombieWaves() : void
@@ -3638,8 +3636,8 @@ package com.popcap.flash.games.pvz.logic
       
       public function DoPlantingEffects(gridX:Number, gridY:Number, plant:CPlant) : void
       {
-         var aXPos:Number = this.GridToPixelX(gridX,gridY) + 41 * 0.675;
-         var aYPos:Number = this.GridToPixelY(gridY,gridY) + 74 * 0.675;
+         var aXPos:Number = this.GridToPixelX(gridX) + 41 * 0.675;
+         var aYPos:Number = this.GridToPixelY(gridY) + 74 * 0.675;
          this.mApp.foleyManager.playFoley(PVZFoleyType.PLANT);
          var anEffect:ParticleSystem = this.mApp.particleManager.spawnParticleSystem(PVZParticles.PARTICLE_PLANTING);
          anEffect.setPosition(aXPos,aYPos);

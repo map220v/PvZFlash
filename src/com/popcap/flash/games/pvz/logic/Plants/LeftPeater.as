@@ -23,8 +23,8 @@ package com.popcap.flash.games.pvz.logic.Plants
          mRow = theGridY;
          if(mBoard)
          {
-            mX = mBoard.GridToPixelX(theGridX,theGridY) - 20;
-            mY = mBoard.GridToPixelY(theGridX,theGridY);
+            mX = mBoard.GridToPixelX(theGridX) - 20;
+            mY = mBoard.GridToPixelY(theGridY);
          }
          mAnimCounter = 0;
          mAnimPing = true;

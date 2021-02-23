@@ -44,8 +44,8 @@ package com.popcap.flash.games.pvz.logic.Plants
          mRow = theGridY;
          if(mBoard)
          {
-            mX = mBoard.GridToPixelX(theGridX,theGridY);
-            mY = mBoard.GridToPixelY(theGridX,theGridY);
+            mX = mBoard.GridToPixelX(theGridX);
+            mY = mBoard.GridToPixelY(theGridY);
          }
          mAnimCounter = 0;
          mAnimPing = true;
@@ -231,11 +231,11 @@ package com.popcap.flash.games.pvz.logic.Plants
          }
          var aTargetCol:int = mBoard.PixelToGridXKeepOnBoard(mTargetX,mY);
          var aDestX:int = mTargetX;
-         var aDestY:int = mBoard.GridToPixelY(aTargetCol,mRow) + 8;
+         var aDestY:int = mBoard.GridToPixelY(mRow) + 8;
          if(mState == STATE_SQUASH_RISING)
          {
-            aStartX = mBoard.GridToPixelX(mPlantCol,mStartRow);
-            aStartY = mBoard.GridToPixelY(mPlantCol,mStartRow);
+            aStartX = mBoard.GridToPixelX(mPlantCol);
+            aStartY = mBoard.GridToPixelY(mStartRow);
             mX = TodCommon.TodAnimateCurve(SQUASH_RISE_TIME,20,mStateCountdown,aStartX,aDestX,TodCommon.CURVE_EASE_IN_OUT);
             mY = TodCommon.TodAnimateCurve(SQUASH_RISE_TIME,20,mStateCountdown,aStartY,aDestY - SQUASH_FALL_HEIGHT,TodCommon.CURVE_EASE_IN_OUT);
             if(mStateCountdown == 0)

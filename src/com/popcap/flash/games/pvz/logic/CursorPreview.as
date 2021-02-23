@@ -120,8 +120,8 @@ package com.popcap.flash.games.pvz.logic
          }
          else if(mBoard.IsPlantInCursor() && mBoard.CanPlantAt(this.mGridX,this.mGridY,aPlantingSeedType) == PLANTING_OK)
          {
-            mX = mBoard.GridToPixelX(this.mGridX,this.mGridY);
-            mY = mBoard.GridToPixelY(this.mGridX,this.mGridY);
+            mX = mBoard.GridToPixelX(this.mGridX);
+            mY = mBoard.GridToPixelY(this.mGridY);
             mVisible = true;
          }
          else

@@ -391,7 +391,7 @@ package com.popcap.flash.games.pvz.logic.Plants
          {
             mY = mY + aRowSpeed;
          }
-         var aDiffY:int = mBoard.GridToPixelY(0,mRow) - mY;
+         var aDiffY:int = mBoard.GridToPixelY(mRow) - mY;
          if(aDiffY > 2 || aDiffY < -2)
          {
             return;

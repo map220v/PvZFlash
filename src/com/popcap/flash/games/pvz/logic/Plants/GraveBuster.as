@@ -26,8 +26,8 @@ package com.popcap.flash.games.pvz.logic.Plants
          mRow = theGridY;
          if(mBoard)
          {
-            mX = mBoard.GridToPixelX(theGridX,theGridY);
-            mY = mBoard.GridToPixelY(theGridX,theGridY);
+            mX = mBoard.GridToPixelX(theGridX);
+            mY = mBoard.GridToPixelY(theGridY);
          }
          var aOffsetX:Number = 3;
          var aOffsetY:Number = -20;
@@ -87,7 +87,7 @@ package com.popcap.flash.games.pvz.logic.Plants
          {
             mStateCountdown--;
          }
-         mY = mBoard.GridToPixelY(mPlantCol,mRow) - 20;
+         mY = mBoard.GridToPixelY(mRow) - 20;
          var aOffsetY:Number = 0;
          if(mState == STATE_GRAVEBUSTER_EATING)
          {

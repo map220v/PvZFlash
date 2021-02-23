@@ -478,8 +478,8 @@ package com.popcap.flash.games.pvz.logic
       {
          this.mChallengeGridX = theScaryPot.mGridX;
          this.mChallengeGridY = theScaryPot.mGridY;
-         var aXPos:int = this.mBoard.GridToPixelX(theScaryPot.mGridX,theScaryPot.mGridY);
-         var aYPos:int = this.mBoard.GridToPixelY(theScaryPot.mGridX,theScaryPot.mGridY);
+         var aXPos:int = this.mBoard.GridToPixelX(theScaryPot.mGridX);
+         var aYPos:int = this.mBoard.GridToPixelY(theScaryPot.mGridY);
          this.mMalletReanim = this.app.reanimator.createReanimation("REANIM_HAMMER");
          this.mMalletReanim.x = aXPos;
          this.mMalletReanim.y = aYPos;
@@ -711,8 +711,8 @@ package com.popcap.flash.games.pvz.logic
          var aZombie:Zombie = null;
          var aNumSum:int = 0;
          var i:int = 0;
-         var aXPos:int = this.mBoard.GridToPixelX(theScaryPot.mGridX,theScaryPot.mGridY);
-         var aYPos:int = this.mBoard.GridToPixelY(theScaryPot.mGridX,theScaryPot.mGridY);
+         var aXPos:int = this.mBoard.GridToPixelX(theScaryPot.mGridX);
+         var aYPos:int = this.mBoard.GridToPixelY(theScaryPot.mGridY);
          switch(theScaryPot.mScaryPotType)
          {
             case SCARYPOT_DYNAMITE:
