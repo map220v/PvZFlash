@@ -163,26 +163,21 @@ package com.popcap.flash.games.pvz.logic.Plants
       public function DoRowAreaDamage(theDamage:int) : void
       {
          var aZombie:Zombie = null;
-         var aRowDiff:int = 0;
          var aZombieRect:Rectangle = null;
          var aOverlap:int = 0;
          var aFinalDamage:int = 0;
          var aAttackRect:Rectangle = GetPlantAttackRect(WEAPON_PRIMARY);
-         for each(aZombie in mBoard.mZombies)
-         {
-            aRowDiff = aZombie.mRow - mRow;
-            if(aRowDiff == 0)
+         var aZombieList:Array = this.mBoard.getZombieList(mRow)
+         for each(aZombie in aZombieList) {
+            if(aZombie.EffectedByDamage())
             {
-               if(aZombie.EffectedByDamage())
+               aZombieRect = aZombie.GetZombieRect();
+               aOverlap = mBoard.GetRectOverlap(aAttackRect,aZombieRect);
+               if(aOverlap > 0)
                {
-                  aZombieRect = aZombie.GetZombieRect();
-                  aOverlap = mBoard.GetRectOverlap(aAttackRect,aZombieRect);
-                  if(aOverlap > 0)
-                  {
-                     aFinalDamage = theDamage;
-                     aZombie.TakeDamage(aFinalDamage,DAMAGE_HITS_SHIELD_AND_BODY);
-                     app.foleyManager.playFoley(PVZFoleyType.SPLAT);
-                  }
+                  aFinalDamage = theDamage;
+                  aZombie.TakeDamage(aFinalDamage,DAMAGE_HITS_SHIELD_AND_BODY);
+                  app.foleyManager.playFoley(PVZFoleyType.SPLAT);
                }
             }
          }

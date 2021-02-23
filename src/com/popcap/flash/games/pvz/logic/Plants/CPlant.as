@@ -297,7 +297,6 @@ package com.popcap.flash.games.pvz.logic.Plants
       public function FindTargetZombie(theRow:int, thePlantWeapon:int) : Zombie
       {
          var aZombie:Zombie = null;
-         var aRowDiff:int = 0;
          var aRange:int = 0;
          var aZombieRect:Rectangle = null;
          var aOverlap:int = 0;
@@ -305,44 +304,39 @@ package com.popcap.flash.games.pvz.logic.Plants
          var aAttackRect:Rectangle = this.GetPlantAttackRect(thePlantWeapon);
          var aHighestWeight:int = 0;
          var aBestZombie:Zombie = null;
-         for each(aZombie in mBoard.mZombies)
-         {
-            aRowDiff = aZombie.mRow - theRow;
-            aRange = 0;
-            if(aRowDiff == 0)
+         var aZombieList:Array = this.mBoard.getZombieList(theRow)
+         for each(aZombie in aZombieList) {
+            if(aZombie.EffectedByDamage())
             {
-               if(aZombie.EffectedByDamage())
+               if(aZombie.mFromWave != Zombie.ZOMBIE_WAVE_CUTSCENE)
                {
-                  if(aZombie.mFromWave != Zombie.ZOMBIE_WAVE_CUTSCENE)
+                  if(this.mSeedType == SEED_CHOMPER)
                   {
-                     if(this.mSeedType == SEED_CHOMPER)
+                     if(aZombie.IsDeadOrDying() || !aZombie.mHasHead)
                      {
-                        if(aZombie.IsDeadOrDying() || !aZombie.mHasHead)
-                        {
-                           continue;
-                        }
-                        if(aZombie.mIsEating || this.mState == STATE_CHOMPER_BITING)
-                        {
-                           aRange = 60;
-                        }
+                        continue;
                      }
-                     if(this.mSeedType == SEED_EXPLODE_O_NUT)
+                     if(aZombie.mIsEating || this.mState == STATE_CHOMPER_BITING)
                      {
-                        if(aZombie.mZombiePhase == PHASE_POLEVAULTER_IN_VAULT)
-                        {
-                           continue;
-                        }
+                        aRange = 60;
                      }
-                     aZombieRect = aZombie.GetZombieRect();
-                     aOverlap = mBoard.GetRectOverlap(aAttackRect,aZombieRect);
-                     if(aOverlap >= -aRange)
+                  }
+                  if(this.mSeedType == SEED_EXPLODE_O_NUT)
+                  {
+                     if(aZombie.mZombiePhase == PHASE_POLEVAULTER_IN_VAULT)
                      {
-                        aPickWeight = -aZombieRect.x;
-                        if(!aBestZombie || aPickWeight > aHighestWeight)
-                        {
-                           aHighestWeight = aPickWeight;
-                           aBestZombie = aZombie;
-                        }
+                        continue;
+                     }
+                  }
+                  aZombieRect = aZombie.GetZombieRect();
+                  aOverlap = mBoard.GetRectOverlap(aAttackRect,aZombieRect);
+                  if(aOverlap >= -aRange)
+                  {
+                     aPickWeight = -aZombieRect.x;
+                     if(!aBestZombie || aPickWeight > aHighestWeight)
+                     {
+                        aHighestWeight = aPickWeight;
+                        aBestZombie = aZombie;
                      }
                   }
                }

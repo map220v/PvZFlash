@@ -82,23 +82,18 @@ package com.popcap.flash.games.pvz.logic.Plants
       public function DoSquashDamage() : void
       {
          var aZombie:Zombie = null;
-         var aRowDiff:int = 0;
          var aZombieRect:Rectangle = null;
          var aRectOverlap:int = 0;
          var aRange:int = 0;
          var aAttackRect:Rectangle = GetPlantAttackRect(WEAPON_PRIMARY);
-         for each(aZombie in mBoard.mZombies)
-         {
-            aRowDiff = aZombie.mRow - mRow;
-            if(aRowDiff == 0)
+         var aZombieList:Array = this.mBoard.getZombieList(this.mRow)
+         for each(aZombie in aZombieList) {
+            aZombieRect = aZombie.GetZombieRect();
+            aRectOverlap = mBoard.GetRectOverlap(aAttackRect,aZombieRect);
+            aRange = 0;
+            if(aRectOverlap > aRange)
             {
-               aZombieRect = aZombie.GetZombieRect();
-               aRectOverlap = mBoard.GetRectOverlap(aAttackRect,aZombieRect);
-               aRange = 0;
-               if(aRectOverlap > aRange)
-               {
-                  aZombie.TakeDamage(1800,DAMAGE_DOESNT_LEAVE_BODY);
-               }
+               aZombie.TakeDamage(1800,DAMAGE_DOESNT_LEAVE_BODY);
             }
          }
       }
@@ -126,7 +121,6 @@ package com.popcap.flash.games.pvz.logic.Plants
       public function FindSquashTarget() : Zombie
       {
          var aZombie:Zombie = null;
-         var aRowDiff:int = 0;
          var aZombieRect:Rectangle = null;
          var aRange:int = 0;
          var aDist:int = 0;
@@ -134,45 +128,41 @@ package com.popcap.flash.games.pvz.logic.Plants
          var aAttackRect:Rectangle = GetPlantAttackRect(WEAPON_PRIMARY);
          var aClosestRange:int = 0;
          var aClosestZombie:Zombie = null;
-         for each(aZombie in mBoard.mZombies)
-         {
-            aRowDiff = aZombie.mRow - mRow;
-            if(aRowDiff == 0)
+         var aZombieList:Array = this.mBoard.getZombieList(mRow)
+         for each(aZombie in aZombieList) {
+            if(aZombie.mHasHead)
             {
-               if(aZombie.mHasHead)
+               aZombieRect = aZombie.GetZombieRect();
+               if(!(aZombie.mZombiePhase == PHASE_POLEVAULTER_PRE_VAULT && aZombieRect.x < mX + 20))
                {
-                  aZombieRect = aZombie.GetZombieRect();
-                  if(!(aZombie.mZombiePhase == PHASE_POLEVAULTER_PRE_VAULT && aZombieRect.x < mX + 20))
+                  if(aZombie.mZombiePhase == PHASE_POLEVAULTER_PRE_VAULT || aZombie.mZombiePhase == PHASE_POLEVAULTER_IN_VAULT)
                   {
-                     if(aZombie.mZombiePhase == PHASE_POLEVAULTER_PRE_VAULT || aZombie.mZombiePhase == PHASE_POLEVAULTER_IN_VAULT)
-                     {
-                        continue;
-                     }
+                     continue;
                   }
-                  aRange = 70;
-                  if(aZombie.mIsEating)
+               }
+               aRange = 70;
+               if(aZombie.mIsEating)
+               {
+                  aRange = 110;
+               }
+               aDist = -mBoard.GetRectOverlap(aAttackRect,aZombieRect);
+               if(aDist <= aRange)
+               {
+                  aCheckLeftDistance = aAttackRect.x;
+                  if(aZombie.mZombiePhase == PHASE_POLEVAULTER_POST_VAULT || aZombie.mZombiePhase == PHASE_POLEVAULTER_PRE_VAULT)
                   {
-                     aRange = 110;
+                     aCheckLeftDistance = aAttackRect.x - 60;
                   }
-                  aDist = -mBoard.GetRectOverlap(aAttackRect,aZombieRect);
-                  if(aDist <= aRange)
+                  if(aZombieRect.x + aZombieRect.width >= aCheckLeftDistance)
                   {
-                     aCheckLeftDistance = aAttackRect.x;
-                     if(aZombie.mZombiePhase == PHASE_POLEVAULTER_POST_VAULT || aZombie.mZombiePhase == PHASE_POLEVAULTER_PRE_VAULT)
+                     if(aZombie == mTargetZombie)
                      {
-                        aCheckLeftDistance = aAttackRect.x - 60;
+                        return aZombie;
                      }
-                     if(aZombieRect.x + aZombieRect.width >= aCheckLeftDistance)
+                     if(!aClosestZombie || aDist < aClosestRange)
                      {
-                        if(aZombie == mTargetZombie)
-                        {
-                           return aZombie;
-                        }
-                        if(!aClosestZombie || aDist < aClosestRange)
-                        {
-                           aClosestZombie = aZombie;
-                           aClosestRange = aDist;
-                        }
+                        aClosestZombie = aZombie;
+                        aClosestRange = aDist;
                      }
                   }
                }

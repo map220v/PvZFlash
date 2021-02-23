@@ -155,7 +155,6 @@ package com.popcap.flash.games.pvz.logic
       {
          var aZombie:Zombie = null;
          var LAWN_MOWER_ROLL_IN_TIME:int = 0;
-         var aRowDiff:int = 0;
          var aZombieRect:Rectangle = null;
          var aOverlap:int = 0;
          var aRange:int = 0;
@@ -184,27 +183,25 @@ package com.popcap.flash.games.pvz.logic
             return;
          }
          var aAttackRect:Rectangle = this.GetLawnMowerAttackRect();
-         for each(aZombie in this.mBoard.mZombies)
-         {
-            aRowDiff = aZombie.mRow - this.mRow;
-            if(aRowDiff == 0)
+
+
+         var aZombieList:Array = this.mBoard.getZombieList(this.mRow)
+         for each(aZombie in aZombieList) {
+            if(aZombie.mZombiePhase != PHASE_ZOMBIE_MOWERED)
             {
-               if(aZombie.mZombiePhase != PHASE_ZOMBIE_MOWERED)
+               aZombieRect = aZombie.GetZombieRect();
+               aOverlap = this.mBoard.GetRectOverlap(aAttackRect,aZombieRect);
+               aRange = 0;
+               if(aOverlap > aRange)
                {
-                  aZombieRect = aZombie.GetZombieRect();
-                  aOverlap = this.mBoard.GetRectOverlap(aAttackRect,aZombieRect);
-                  aRange = 0;
-                  if(aOverlap > aRange)
+                  if(this.mMowerState == MOWER_READY)
                   {
-                     if(this.mMowerState == MOWER_READY)
+                     if(!aZombie.mHasHead)
                      {
-                        if(!aZombie.mHasHead)
-                        {
-                           continue;
-                        }
+                        continue;
                      }
-                     this.MowZombie(aZombie);
                   }
+                  this.MowZombie(aZombie);
                }
             }
          }

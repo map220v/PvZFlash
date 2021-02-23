@@ -94,30 +94,25 @@ package com.popcap.flash.games.pvz.logic
       public function FindCollisionTarget() : Zombie
       {
          var aZombie:Zombie = null;
-         var aRowDiff:int = 0;
          var aZombieRect:Rectangle = null;
          var aProjectileRect:Rectangle = this.mImpactRect;
          var aZombieClosest:Zombie = null;
          var aFarthestLeft:int = 0;
-         for each(aZombie in mBoard.mZombies)
-         {
-            aRowDiff = aZombie.mRow - mRow;
-            if(aRowDiff == 0)
+         var aZombieList:Array = this.mBoard.getZombieList(mRow)
+         for each(aZombie in aZombieList) {
+            if(!aZombie.IsDeadOrDying())
             {
-               if(!aZombie.IsDeadOrDying())
+               if(aZombie.EffectedByDamage())
                {
-                  if(aZombie.EffectedByDamage())
+                  aZombieRect = aZombie.GetZombieRect();
+                  if(aZombieRect.left <= this.mImpactRect.right)
                   {
-                     aZombieRect = aZombie.GetZombieRect();
-                     if(aZombieRect.left <= this.mImpactRect.right)
+                     if(aZombieRect.right >= this.mImpactRect.left)
                      {
-                        if(aZombieRect.right >= this.mImpactRect.left)
+                        if(!(aZombieClosest && aZombie.mX >= aFarthestLeft))
                         {
-                           if(!(aZombieClosest && aZombie.mX >= aFarthestLeft))
-                           {
-                              aZombieClosest = aZombie;
-                              aFarthestLeft = aZombie.mX;
-                           }
+                           aZombieClosest = aZombie;
+                           aFarthestLeft = aZombie.mX;
                         }
                      }
                   }

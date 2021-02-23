@@ -4670,5 +4670,23 @@ package com.popcap.flash.games.pvz.logic
             }
          }
       }
+
+      public function getZombieList(theRow:int = NaN) : Array {
+         var aZombie:Zombie = null
+         var zombieList:Array = new Array()
+         if (!isNaN(theRow)) {
+            for each(aZombie in this.mZombies) {
+               if (aZombie.mRow == theRow) {
+                  zombieList.push(aZombie)
+               }
+            }
+         }
+         else {
+            for each(aZombie in this.mZombies) {
+               zombieList.push(aZombie)
+            }
+         }
+         return zombieList
+      }
    }
 }
