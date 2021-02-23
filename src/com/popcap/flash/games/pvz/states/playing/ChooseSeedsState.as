@@ -12,15 +12,14 @@ package com.popcap.flash.games.pvz.states.playing
       public static const SEED_CHOOSER_OFFSETSCREEN_OFFSET:int = 348;
       
       public static const TimeSeedChoserSlideOnStart:int = 500;
-      
-      public static const TimeSeedChoserSlideOffEnd:int = TimeSeedChoserSlideOffStart + 250;
-      
-      public static const TimeSeedChoserSlideOffStart:int = TimeSeedChoserSlideOnEnd + 250;
-      
-      public static const SEED_CHOOSER_STARTBUTTON_OFFSET:int = 713;
-      
+
       public static const TimeSeedChoserSlideOnEnd:int = TimeSeedChoserSlideOnStart + 250;
-       
+
+      public static const TimeSeedChoserSlideOffStart:int = TimeSeedChoserSlideOnEnd + 250;
+
+      public static const TimeSeedChoserSlideOffEnd:int = TimeSeedChoserSlideOffStart + 250;
+
+      public static const SEED_CHOOSER_STARTBUTTON_OFFSET:int = 713;
       
       private var app:PVZApp;
       
