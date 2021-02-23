@@ -6,10 +6,37 @@
         <dependencies target-player="11.1">
           <sdk name="flex_sdk_4.6.0.23201B" />
         </dependencies>
-        <compiler-options />
-        <packaging-air-desktop package-file-name="PvZ" />
+        <compiler-options>
+          <map>
+            <entry key="compiler.debug.swf" value="true" />
+          </map>
+        </compiler-options>
+        <packaging-air-desktop package-file-name="PvZ">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/prebuiltAssets/music" path-in-package="music" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/prebuiltAssets/properties" path-in-package="properties" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/prebuiltAssets/data.xml" path-in-package="data.xml" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/prebuiltAssets/resources.swf" path-in-package="resources.swf" />
+          </files-to-package>
+        </packaging-air-desktop>
         <packaging-android />
         <packaging-ios />
+      </configuration>
+      <configuration name="PvZMobile" target-platform="Mobile" pure-as="true" main-class="com.popcap.flash.games.pvz.PVZFlash" output-file="PvZMobile.swf" output-folder="$MODULE_DIR$/out/production/PvZ">
+        <dependencies>
+          <sdk name="flex_sdk_4.6.0.23201B" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android enabled="true" package-file-name="PvZMobile">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/prebuiltAssets/music" path-in-package="music" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/prebuiltAssets/properties" path-in-package="properties" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/prebuiltAssets/data.xml" path-in-package="data.xml" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/prebuiltAssets/resources.swf" path-in-package="resources.swf" />
+          </files-to-package>
+        </packaging-android>
+        <packaging-ios package-file-name="PvZMobile" />
       </configuration>
     </configurations>
     <compiler-options />
