@@ -1,7 +1,7 @@
 package com.popcap.flash.games.pvz
 {
 
-[SWF(width="540", height="405")]
+[SWF(width="540", height="405",backgroundColor="0")]
 public class PVZFlash extends PVZApp
    {
       public function PVZFlash()
