@@ -23,8 +23,6 @@ package com.popcap.flash.games.pvz.logic.UI
       
       public static const DIALOG_LOCKED:int = 6;
       
-      public static const DIALOG_UPSELL:int = 5;
-      
       public static const DIALOG_REPICK:int = 4;
       
       public static const DIALOG_MAINMENU:int = 1;
@@ -69,13 +67,12 @@ package com.popcap.flash.games.pvz.logic.UI
          this.mBoard = theBoard;
          this.mOkButton = new ImageButtonWidget(this.Menu_Ok,this);
          this.mCancelButton = new ImageButtonWidget(this.Menu_Cancel,this);
-         this.mURLRequest = new URLRequest(app.mUpsellLink);
       }
       
       public function MakeDownButtonImage(theText:String) : ImageInst
       {
          var size:int = 2;
-         if(this.mDialogType == DIALOG_GAMEOVER || this.mDialogType == DIALOG_UPSELL)
+         if(this.mDialogType == DIALOG_GAMEOVER)
          {
             size = 4;
          }
@@ -116,7 +113,7 @@ package com.popcap.flash.games.pvz.logic.UI
       public function MakeUpButtonImage(theText:String) : ImageInst
       {
          var size:int = 2;
-         if(this.mDialogType == DIALOG_GAMEOVER || this.mDialogType == DIALOG_UPSELL)
+         if(this.mDialogType == DIALOG_GAMEOVER)
          {
             size = 4;
          }
@@ -200,7 +197,7 @@ package com.popcap.flash.games.pvz.logic.UI
          this.mOkButton.doFinger = true;
          this.mOkButton.visible = true;
          this.mOkButton.setDisabled(false);
-         if(this.mDialogType == DIALOG_GAMEOVER || this.mDialogType == DIALOG_UPSELL)
+         if(this.mDialogType == DIALOG_GAMEOVER)
          {
             this.mOkButton.resize(this.x + 20,this.y + 130 + theHeight * 36,172,31);
          }
@@ -212,7 +209,7 @@ package com.popcap.flash.games.pvz.logic.UI
          {
             this.mOkButton.resize(this.x + 20,this.y + 130 + theHeight * 36,110,31);
          }
-         if(this.mDialogType == DIALOG_GAMEOVER || this.mDialogType == DIALOG_RESTART || this.mDialogType == DIALOG_UPSELL || this.mDialogType == DIALOG_MAINMENU)
+         if(this.mDialogType == DIALOG_GAMEOVER || this.mDialogType == DIALOG_RESTART || this.mDialogType == DIALOG_MAINMENU)
          {
             this.mCancelButton.mUpImage = this.MakeUpButtonImage(this.mCancelText);
             this.mCancelButton.mOverImage = this.MakeDownButtonImage(this.mCancelText);
@@ -223,10 +220,6 @@ package com.popcap.flash.games.pvz.logic.UI
             this.mCancelButton.visible = true;
             this.mCancelButton.setDisabled(false);
             this.mCancelButton.resize(this.x + 15 + theWidth * 63,this.y + 130 + theHeight * 36,110,31);
-            if(this.mDialogType == DIALOG_UPSELL)
-            {
-               this.mCancelButton.resize(this.x - 50 + theWidth * 63,this.y + 130 + theHeight * 36,172,31);
-            }
          }
       }
       
@@ -264,10 +257,6 @@ package com.popcap.flash.games.pvz.logic.UI
                      this.app.adAPI.GameEnd();
                      this.app.stateManager.changeState(PVZApp.STATE_MAIN_MENU);
                   }
-                  if(this.app.mUpsellOn)
-                  {
-                     this.app.stateManager.changeState(PVZApp.STATE_UPSELL_SCREEN);
-                  }
                   else
                   {
                      this.app.stateManager.changeState(PVZApp.STATE_MAIN_MENU);
@@ -299,9 +288,6 @@ package com.popcap.flash.games.pvz.logic.UI
                {
                   this.KillAll();
                }
-               else if(this.mDialogType == DIALOG_UPSELL)
-               {
-               }
                break;
             case this.Menu_Cancel:
                if(this.mDialogType == DIALOG_REPICK)
@@ -311,10 +297,6 @@ package com.popcap.flash.games.pvz.logic.UI
                else if(this.mDialogType == DIALOG_RESTART || this.mDialogType == DIALOG_MAINMENU)
                {
                   this.app.mOptionsMenu.KillDialogBox();
-               }
-               else if(this.mDialogType == DIALOG_UPSELL)
-               {
-                  this.KillAll();
                }
          }
       }

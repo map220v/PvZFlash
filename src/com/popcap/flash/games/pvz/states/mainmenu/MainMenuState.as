@@ -40,8 +40,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
       
       private var menuReanim:Reanimation;
       
-      private var mUpsellButton:CButtonWidget;
-      
       private var Menu_MusicCheckBox:int = 105;
       
       private var mPuzzleButton:ImageButtonWidget;
@@ -68,8 +66,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
       
       private var mStartingGame:Boolean;
       
-      private var mUpsellCounter:int;
-      
       public var mSoundCheckBox:CheckboxWidget;
       
       private var mURLRequest:URLRequest;
@@ -77,8 +73,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
       private var mSoundButton:ImageButtonWidget;
       
       public var mDialogBox:DialogBox;
-      
-      private var GameSelector_Upsell:int = 105;
       
       public var mMusicCheckBox:CheckboxWidget;
       
@@ -130,12 +124,10 @@ package com.popcap.flash.games.pvz.states.mainmenu
          this.mMinigameButton.setDisabled(false);
          this.mSurvivalButton.setDisabled(false);
          this.mAdventureButton.setDisabled(false);
-         this.mUpsellButton.setDisabled(false);
          this.mAdventureButton.setVisible(true);
          this.mPuzzleButton.setVisible(true);
          this.mMinigameButton.setVisible(true);
          this.mSurvivalButton.setVisible(true);
-         this.mUpsellButton.setVisible(true);
          this.menuReanim.setTrackVisible("SelectorScreen_Survival_button",false);
          this.menuReanim.setTrackVisible("SelectorScreen_Challenges_button",false);
          this.menuReanim.setTrackVisible("SelectorScreen_ZenGarden_button",false);
@@ -158,9 +150,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
          this.app.mTotalZombiesKilled = 0;
          this.app.adAPI.setScore(this.app.mTotalZombiesKilled);
          this.app.registerCheat("unlockAllModes",this.unlockAllModes);
-         this.mURLRequest = new URLRequest(this.app.mUpsellLink);
-         this.app.mUpsellOn = AppUtils.asBoolean(this.app.getProperties().upsell.enabled,false);
-         this.app.mUpsellLink = this.app.getProperties().upsell.url;
          if(this.app.musicManager.getPlayingId() != PVZMusic.CRAZY_DAVE)
          {
             this.app.musicManager.playMusic(PVZMusic.CRAZY_DAVE);
@@ -185,12 +174,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
          if(this.zombieHandReanim != null)
          {
             this.zombieHandReanim.drawLerp(g,mScratchMatrix,1);
-         }
-         if(this.mUpsellButton.visible)
-         {
-            yPos = TodCommon.TodAnimateCurveFloat(0,50,this.mUpsellCounter,-50,110,TodCommon.CURVE_EASE_OUT);
-            g.drawImage(this.app.imageManager.getImageInst(PVZImages.IMAGE_SELECTORSCREEN_WOODSIGN),17,yPos);
-            this.mUpsellButton.move(17,yPos);
          }
          g.reset();
          this.app.widgetManager.drawScreen(g);
@@ -315,17 +298,8 @@ package com.popcap.flash.games.pvz.states.mainmenu
          this.mMinigameButton.visible = false;
          this.mMinigameButton.setDisabled(false);
          this.app.widgetManager.addWidget(this.mMinigameButton);
-         this.mUpsellButton = new CButtonWidget(this.GameSelector_Upsell,this);
-         this.mUpsellButton.setDisabled(false);
-         this.mUpsellButton.visible = false;
-         this.mUpsellButton.label = this.app.stringManager.translateString("[UPSELL_BUY_BUTTON]");
-         this.mUpsellButton.setColor(CButtonWidget.COLOR_LABEL,Color.RGB(1,1,1));
-         this.mUpsellButton.setColor(CButtonWidget.COLOR_LABEL_HILITE,Color.RGB(179 / 255,158 / 255,110 / 255));
          var font5:FontInst = this.app.fontManager.getFontInst(PVZFonts.FONT_BRIANNETOD16);
          font5.scale = 0.9;
-         this.mUpsellButton.font = font5;
-         this.mUpsellButton.resize(17,110,190,30);
-         this.app.widgetManager.addWidget(this.mUpsellButton);
          this.initSoundCheckboxes(buttonsOn);
          if(buttonsOn)
          {
@@ -346,7 +320,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
          this.mPuzzleButton.setVisible(false);
          this.mMinigameButton.setVisible(false);
          this.mSurvivalButton.setVisible(false);
-         this.mUpsellButton.setVisible(false);
          this.menuReanim.setTrackVisible("SelectorScreen_Survival_button",true);
          this.menuReanim.setTrackVisible("SelectorScreen_Challenges_button",true);
          this.menuReanim.setTrackVisible("SelectorScreen_ZenGarden_button",true);
@@ -434,21 +407,8 @@ package com.popcap.flash.games.pvz.states.mainmenu
          var mode:int = -1;
          var level:int = -1;
          var doStart:Boolean = false;
-         var upsellXML:XML = <data>DeluxeDownload</data>;
          switch(id)
          {
-            case this.GameSelector_Upsell:
-               if(this.app.mUpsellOn)
-               {
-                  this.ButtonsOff();
-                  this.app.stateManager.pushState(PVZApp.STATE_UPSELL_SCREEN);
-               }
-               else
-               {
-                  this.app.adAPI.CustomEvent(upsellXML,this.DoUpsell);
-                  navigateToURL(this.mURLRequest);
-               }
-               break;
             case this.GameSelector_Adventure:
                this.app.foleyManager.playFoley(PVZFoleyType.GRAVEBUTTON);
                this.mStartingLevel = this.app.mLevel;
@@ -500,23 +460,16 @@ package com.popcap.flash.games.pvz.states.mainmenu
                }
                break;
             case this.GameSelector_Minigame:
-               if(this.app.mUpsellOn)
-               {
-                  this.ButtonsOff();
-                  this.app.stateManager.pushState(PVZApp.STATE_UPSELL_SCREEN);
-               }
-               else
-               {
-                  this.mShowingDialog = true;
-                  this.ButtonsOff();
-                  this.mDialogBox.mDialogType = DialogBox.DIALOG_LOCKED;
-                  aDialogHeader = this.app.stringManager.translateString("[FULL_VERSION_ONLY]");
-                  aDialogMessage = this.app.stringManager.translateString("[FULL_VERSION_MODE]");
-                  aDialogOk = this.app.stringManager.translateString("[DIALOG_BUTTON_OK]");
-                  this.mDialogBox.visible = true;
-                  this.mDialogBox.move(75,50);
-                  this.mDialogBox.InitializeDialogBox(aDialogHeader,aDialogMessage,aDialogOk,aDialogCancel,4,2);
-               }
+               this.mShowingDialog = true;
+               this.ButtonsOff();
+               this.mDialogBox.mDialogType = DialogBox.DIALOG_LOCKED;
+               aDialogHeader = this.app.stringManager.translateString("[FULL_VERSION_ONLY]");
+               aDialogMessage = this.app.stringManager.translateString("[FULL_VERSION_MODE]");
+               aDialogOk = this.app.stringManager.translateString("[DIALOG_BUTTON_OK]");
+               this.mDialogBox.visible = true;
+               this.mDialogBox.move(75,50);
+               this.mDialogBox.InitializeDialogBox(aDialogHeader,aDialogMessage,aDialogOk,aDialogCancel,4,2);
+
          }
          if(doStart)
          {
@@ -563,7 +516,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
          this.mPuzzleButton.setDisabled(true);
          this.mMinigameButton.setDisabled(true);
          this.mSurvivalButton.setDisabled(true);
-         this.mUpsellButton.setDisabled(true);
          this.mSoundCheckBox.disabled = true;
          this.mMusicCheckBox.disabled = true;
          this.zombieHandReanim = this.app.reanimator.createReanimation(PVZReanims.REANIM_ZOMBIE_HAND);
@@ -643,10 +595,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
                this.app.foleyManager.playFoley(PVZFoleyType.EVILLAUGH);
             }
          }
-         if(this.mUpsellButton.visible && this.mUpsellCounter < 200)
-         {
-            this.mUpsellCounter++;
-         }
       }
       
       public function MakeStartAdventureButton(theImage:ImageInst) : ImageInst
@@ -705,7 +653,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
          this.mMinigameButton.visible = true;
          this.mSoundCheckBox.visible = true;
          this.mMusicCheckBox.visible = true;
-         this.mUpsellButton.visible = true;
       }
       
       private function initSoundCheckboxes(visible:Boolean) : void
@@ -733,10 +680,6 @@ package com.popcap.flash.games.pvz.states.mainmenu
       }
       
       public function buttonMouseLeave(id:Number) : void
-      {
-      }
-      
-      public function DoUpsell() : void
       {
       }
    }

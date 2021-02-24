@@ -19,8 +19,6 @@ package com.popcap.flash.games.pvz.logic
       
       public var mSeedChoosing:Boolean;
       
-      public var mUpsellHideBoard:Boolean;
-      
       public var mLawnMowerTime:int;
       
       public var mPreUpdatingBoard:Boolean;
@@ -68,7 +66,6 @@ package com.popcap.flash.games.pvz.logic
          this.mPlacedLawnItems = false;
          this.mCrazyDaveCountDown = 0;
          this.mCrazyDaveLastTalkIndex = -1;
-         this.mUpsellHideBoard = false;
          this.mPreUpdatingBoard = false;
       }
    }

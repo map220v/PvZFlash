@@ -119,7 +119,8 @@ package com.popcap.flash.games.pvz.logic
       public static const COIN_SUN:String = "sun";
       
       public static const COIN_FINAL_SEED_PACKET:String = "finalseedpacket";
-       
+
+      public static const SEED_POTATOMINE = 12;
       
       public var mCollectionDistance:Number;
       
@@ -716,7 +717,7 @@ package com.popcap.flash.games.pvz.logic
          var aOffsetX:Number = 10;
          var aOffsetY:Number = 15;
          var aScale:Number = 1;
-         switch(aSeedType)
+         switch(aSeedType)//TODO: get seed packet images and offsets from CPlant.as
          {
             case SEED_EXPLODE_O_NUT:
                aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_WALLNUT);
@@ -784,6 +785,11 @@ package com.popcap.flash.games.pvz.logic
                break;
             case SEED_LEFTPEATER:
                aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_LEFTFACINGPEASHOOTER);
+               aOffsetX = aOffsetX + 2;
+               aOffsetY = aOffsetY + 5;
+               break;
+            case SEED_POTATOMINE:
+               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
                aOffsetX = aOffsetX + 2;
                aOffsetY = aOffsetY + 5;
          }

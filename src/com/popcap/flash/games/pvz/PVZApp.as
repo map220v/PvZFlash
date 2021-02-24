@@ -11,7 +11,6 @@ package com.popcap.flash.games.pvz
    import com.popcap.flash.games.pvz.logic.SeedChooserScreen;
    import com.popcap.flash.games.pvz.logic.UI.DialogBox;
    import com.popcap.flash.games.pvz.logic.UI.OptionsDialog;
-   import com.popcap.flash.games.pvz.logic.UI.UpsellScreen;
    import com.popcap.flash.games.pvz.states.loading.LoadingState;
    import com.popcap.flash.games.pvz.states.loading.TitleScreenState;
    import com.popcap.flash.games.pvz.states.mainmenu.MainMenuState;
@@ -32,7 +31,6 @@ package com.popcap.flash.games.pvz
    import com.popcap.flash.games.pvz.states.playing.SodRollState;
    import com.popcap.flash.games.pvz.states.playing.StartLevelState;
    import com.popcap.flash.games.pvz.states.playing.SurvivalRepickState;
-   import com.popcap.flash.games.pvz.states.playing.UpsellScreenState;
    import com.popcap.flash.games.pvz.states.playing.ZombiesWonState;
    import flash.display.Loader;
    import flash.utils.describeType;
@@ -62,8 +60,6 @@ package com.popcap.flash.games.pvz
       
       public static const SCENE_CREDIT:int = 6;
       
-      public static const STATE_UPSELL_SCREEN:String = "UpsellScreen";
-      
       public static const GAMEMODE_SURVIVAL_NORMAL_STAGE_3:int = 3;
       
       public static const GAMEMODE_SURVIVAL_NORMAL_STAGE_5:int = 5;
@@ -87,8 +83,6 @@ package com.popcap.flash.games.pvz
       public static const SCENE_MENU:int = 1;
       
       public static const STATE_ZOMBIES_WON:String = "ZombiesWon";
-      
-      public static const GAMEMODE_UPSELL:int = 7;
       
       public static const STATE_START_LEVEL:String = "StartLevel";
       
@@ -189,11 +183,7 @@ package com.popcap.flash.games.pvz
       
       public var mMusicOn:Boolean;
       
-      public var mUpsellOn:Boolean;
-      
       public var mGameMode:int;
-      
-      public var mUpsellScreen:UpsellScreen;
       
       public var mGamesPlayed:int;
       
@@ -202,8 +192,6 @@ package com.popcap.flash.games.pvz
       public var mMaxPlays:int;
       
       public var mTotalZombiesKilled:int = 0;
-      
-      public var mUpsellLink:String;
       
       private var mReanimator:Reanimator;
       
@@ -389,7 +377,6 @@ package com.popcap.flash.games.pvz
          stateManager.bindState(STATE_CHALLENGE_SCREEN,new ChallengeScreenState(this));
          stateManager.bindState(STATE_DIALOG_BOX,new DialogState(this));
          stateManager.bindState(STATE_PLAY_LEVEL,new PlayLevelState(this));
-         stateManager.bindState(STATE_UPSELL_SCREEN,new UpsellScreenState(this));
          stateManager.bindState(STATE_PAUSE_SCREEN,new PauseState(this));
          if(!this.mSoundOn)
          {

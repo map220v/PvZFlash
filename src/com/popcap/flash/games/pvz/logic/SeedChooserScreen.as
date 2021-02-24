@@ -69,7 +69,8 @@ package com.popcap.flash.games.pvz.logic
       private static const SEED_SNOWPEA:int = 5;
       
       public static const CHOOSE_VIEW_LAWN:int = 3;
-       
+
+      public static const SEED_POTATOMINE:int = 12;
       
       public var mStartButton:ImageButtonWidget;
       
@@ -78,8 +79,6 @@ package com.popcap.flash.games.pvz.logic
       private var mButtonImage:ImageInst;
       
       public var mSeedsInBank:int;
-      
-      private var mUpsellText:StringRenderable;
       
       public var Options_Menu:int = 100;
       
@@ -179,7 +178,7 @@ package com.popcap.flash.games.pvz.logic
             this.mLawnViewButton.visible = false;
             this.mLawnViewButton.setDisabled(true);
          }
-         for(i = 0; i < 12; i++)
+         for(i = 0; i < 13; i++)
          {
             aChosenSeed = new ChosenSeed();
             aPoint = new Point();
@@ -221,14 +220,6 @@ package com.popcap.flash.games.pvz.logic
          this.mBackground = app.imageManager.getImageInst(PVZImages.IMAGE_SEEDCHOOSER_BACKGROUND);
          this.mButtonImage = app.imageManager.getImageInst(PVZImages.IMAGE_SEEDCHOOSER_BUTTON);
          this.mPacketSilhouette = app.imageManager.getImageInst(PVZImages.IMAGE_SEEDPACKETSILHOUETTE);
-         this.mUpsellText = new StringRenderable(0);
-         this.mUpsellText.setBounds(27,240,270,130);
-         var upsellString:String = app.stringManager.translateString("[SEEDCHOOSER_UPSELL_MESSAGE]");
-         font = app.fontManager.getFontInst(PVZFonts.FONT_DWARVENTODCRAFT18YELLOW);
-         font.setColor(1,1,1,1);
-         font.scale = 1.2;
-         this.mUpsellText.font = font;
-         this.mUpsellText.text = upsellString;
          this.mDialogBox = new DialogBox(app,this.mBoard);
          this.mDialogBox.setVisible(false);
       }
@@ -664,7 +655,6 @@ package com.popcap.flash.games.pvz.logic
          var y:int = 0;
          var aSeedType:int = 0;
          var aChosenSeed:ChosenSeed = null;
-         var upsellImage:ImageInst = null;
          if(!this.mBoard.ChooseSeedsOnCurrentLevel())
          {
             return;
@@ -750,12 +740,6 @@ package com.popcap.flash.games.pvz.logic
                }
             }
          }
-         if(this.mBoard.mLevel > 12 || this.app.IsSurvivalMode())
-         {
-            upsellImage = this.app.imageManager.getImageInst(PVZImages.IMAGE_SEEDCHOOSER_UPSELL);
-            g.drawImage(upsellImage,15,242);
-            this.mUpsellText.draw(g);
-         }
          this.mToolTip.Draw(g);
       }
       
@@ -831,6 +815,10 @@ package com.popcap.flash.games.pvz.logic
             case SEED_WALLNUT:
                aPlantImg = this.app.imageManager.getImageInst(PVZImages.IMAGE_WALLNUT);
                aOffsetX = aOffsetX + 3;
+               break;
+            case SEED_POTATOMINE:
+               aPlantImg = this.app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
+               aOffsetX = aOffsetX + 3;
          }
          bufferG.pushState();
          bufferG.scale(aScale,aScale);
@@ -870,9 +858,9 @@ package com.popcap.flash.games.pvz.logic
          }
          if(!this.app.IsAdventureMode())
          {
-            aSeeds = 12;
+            aSeeds = 13;
          }
-         var theSeedType:int = Math.min(12,aSeeds);
+         var theSeedType:int = Math.min(13,aSeeds);
          if(theType >= theSeedType)
          {
             return false;

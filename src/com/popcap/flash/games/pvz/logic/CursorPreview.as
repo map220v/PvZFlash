@@ -61,7 +61,8 @@ package com.popcap.flash.games.pvz.logic
       private static const SEED_SNOWPEA:int = 5;
       
       private static const LAWN_XMAX:int = 513;
-       
+
+      private static const SEED_POTATOMINE = 12;
       
       public var mGridX:int;
       
@@ -209,6 +210,9 @@ package com.popcap.flash.games.pvz.logic
                break;
             case SEED_LEFTPEATER:
                aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_LEFTFACINGPEASHOOTER);
+               break;
+            case SEED_POTATOMINE:
+               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
          }
          aPlantImg.useColor = true;
          if(theType != SEED_EXPLODE_O_NUT)

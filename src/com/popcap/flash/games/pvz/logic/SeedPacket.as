@@ -7,7 +7,8 @@ package com.popcap.flash.games.pvz.logic
    import com.popcap.flash.framework.resources.particles.ParticleSystem;
    import com.popcap.flash.games.pvz.PVZApp;
    import com.popcap.flash.games.pvz.PVZFoleyType;
-   import com.popcap.flash.games.pvz.renderables.ParticleRenderable;
+import com.popcap.flash.games.pvz.logic.Plants.PotatoMine;
+import com.popcap.flash.games.pvz.renderables.ParticleRenderable;
    import com.popcap.flash.games.pvz.resources.PVZFonts;
    import com.popcap.flash.games.pvz.resources.PVZImages;
    import com.popcap.flash.games.pvz.resources.PVZParticles;
@@ -107,6 +108,8 @@ package com.popcap.flash.games.pvz.logic
       public static const TUTORIAL_SHOVEL_KEEP_DIGGING:int = 15;
       
       public static const SEED_GRAVEBUSTER:int = 11;
+
+      public static const SEED_POTATOMINE:int = 12;
       
       private var mSlotMachiningPosition:Number;
       
@@ -414,6 +417,10 @@ package com.popcap.flash.games.pvz.logic
             case SEED_LEFTPEATER:
                aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_LEFTFACINGPEASHOOTER);
                aOffsetX = aOffsetX + 4;
+               break;
+            case SEED_POTATOMINE:
+               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
+               aOffsetX = aOffsetX + 4;
          }
          bufferG.pushState();
          bufferG.scale(aScale,aScale);
@@ -540,6 +547,9 @@ package com.popcap.flash.games.pvz.logic
             case SEED_WALLNUT:
             case SEED_SQUASH:
                aRefreshTime = 3000;
+               break;
+            case PotatoMine:
+               aRefreshTime = 1500;
                break;
             default:
                aRefreshTime = 750;

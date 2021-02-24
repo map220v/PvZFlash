@@ -253,7 +253,7 @@ package com.popcap.flash.games.pvz.logic
       public function GetCurrentPlantCost(theSeedType:int) : int
       {
          var aCost:int = 0;
-         switch(theSeedType)
+         switch(theSeedType)//TODO:Take cost from CPlant.as
          {
             case SEED_PEASHOOTER:
                aCost = 100;

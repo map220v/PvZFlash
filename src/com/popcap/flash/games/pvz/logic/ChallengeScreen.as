@@ -26,8 +26,6 @@ package com.popcap.flash.games.pvz.logic
       
       private var StartGame:int = 100;
       
-      private var mUpsellText:StringRenderable;
-      
       private var mTitleString:String;
       
       public var mBackToMenuButton:CButtonWidget;
@@ -77,18 +75,12 @@ package com.popcap.flash.games.pvz.logic
          font = app.fontManager.getFontInst(PVZFonts.FONT_DWARVENTODCRAFT36GREENINSET);
          font.scale = 0.8;
          font.setColor(1,90 / 255,40 / 255,30 / 255);
-         this.mUpsellText = new StringRenderable(0);
-         this.mUpsellText.font = font;
          if(app.IsScaryPotterLevel())
          {
-            this.mUpsellText.setBounds(20,150,500,200);
-            this.mUpsellText.text = app.stringManager.translateString("[PUZZLE_UPSELL_MESSAGE]");
             this.mTitleString = app.stringManager.translateString("[SCARY_POTTER]");
          }
          else if(app.IsSurvivalMode())
          {
-            this.mUpsellText.setBounds(70,150,420,200);
-            this.mUpsellText.text = app.stringManager.translateString("[SURVIVAL_UPSELL_MESSAGE]");
             this.mTitleString = app.stringManager.translateString("[PICK_AREA]");
          }
       }
@@ -192,7 +184,6 @@ package com.popcap.flash.games.pvz.logic
             aPosY = 100 + 2 * 100;
             g.drawImage(aBlank,aPosX,aPosY);
          }
-         this.mUpsellText.draw(g);
          g.drawImage(this.mBackToMenuImage,20,361);
       }
       

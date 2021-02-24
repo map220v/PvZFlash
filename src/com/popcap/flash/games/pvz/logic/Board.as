@@ -29,7 +29,8 @@ package com.popcap.flash.games.pvz.logic
    import com.popcap.flash.games.pvz.logic.Plants.Squash;
    import com.popcap.flash.games.pvz.logic.Plants.SunShroom;
    import com.popcap.flash.games.pvz.logic.Plants.Sunflower;
-   import com.popcap.flash.games.pvz.logic.Plants.Wallnut;
+import com.popcap.flash.games.pvz.logic.Plants.PotatoMine;
+import com.popcap.flash.games.pvz.logic.Plants.Wallnut;
    import com.popcap.flash.games.pvz.logic.UI.OptionsDialog;
    import com.popcap.flash.games.pvz.logic.UI.ToolTipWidget;
    import com.popcap.flash.games.pvz.logic.Zombies.Zombie;
@@ -384,7 +385,8 @@ package com.popcap.flash.games.pvz.logic
       public static const RENDER_LAYER_PARTICLE:int = RENDER_LAYER_LAWN + 7000;
       
       public static const RENDER_LAYER_UI_BOTTOM:int = 100000;
-       
+
+      public static const SEED_POTATOMINE:int = 12;
       
       public var mLevelFont:FontInst;
       
@@ -866,6 +868,9 @@ package com.popcap.flash.games.pvz.logic
                break;
             case SEED_LEFTPEATER:
                aReanimType = PVZReanims.REANIM_PEASHOOTER;
+               break;
+            case SEED_POTATOMINE:
+               aReanimType = PVZReanims.REANIM_CHERRYBOMB;
          }
          return aReanimType;
       }
@@ -2585,6 +2590,9 @@ package com.popcap.flash.games.pvz.logic
             case SEED_GRAVEBUSTER:
                aCost = 75;
                break;
+            case SEED_POTATOMINE:
+               aCost = 25;
+               break;
             default:
                aCost = 100;
          }
@@ -2843,6 +2851,9 @@ package com.popcap.flash.games.pvz.logic
                break;
             case SEED_LEFTPEATER:
                aPlant = new LeftPeater(theGridX,theGridY,theSeedType,this.mApp,this);
+               break;
+            case SEED_POTATOMINE:
+               aPlant = new PotatoMine(theGridX,theGridY,theSeedType,this.mApp,this);
                break;
             default:
                aPlant = new PeaShooter(theGridX,theGridY,theSeedType,this.mApp,this);

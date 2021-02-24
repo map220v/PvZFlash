@@ -296,14 +296,7 @@ package com.popcap.flash.games.pvz.states.playing
             }
             else if(this.app.IsAdventureMode() && this.app.mBoard.mLevel == 14)
             {
-               if(this.app.mUpsellOn)
-               {
-                  this.app.stateManager.changeState(PVZApp.STATE_UPSELL_SCREEN);
-               }
-               else
-               {
-                  this.app.stateManager.changeState(PVZApp.STATE_MAIN_MENU);
-               }
+               this.app.stateManager.changeState(PVZApp.STATE_MAIN_MENU);
             }
          }
          switch(this.mCrazyDaveReanim.currentTrack)

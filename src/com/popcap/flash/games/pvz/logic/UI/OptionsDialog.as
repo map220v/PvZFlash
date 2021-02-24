@@ -34,8 +34,6 @@ package com.popcap.flash.games.pvz.logic.UI
       
       public var mMusicCheckBox:CheckboxWidget;
       
-      public var mUpsellButton:ImageButtonWidget;
-      
       public var app:PVZApp;
       
       public var mSeedChooserShowing:Boolean = false;
@@ -58,15 +56,11 @@ package com.popcap.flash.games.pvz.logic.UI
       
       private var mReturnToGameButton:ImageInst;
       
-      private var Menu_Upsell:int = 101;
-      
       public var mDialogOk:String;
       
       public var mIsSound:Boolean;
       
       public var mSoundCheckBox:CheckboxWidget;
-      
-      private var upsellXML:XML;
       
       public var mIsMusic:Boolean;
       
@@ -86,11 +80,9 @@ package com.popcap.flash.games.pvz.logic.UI
       {
          var font:FontInst = null;
          var aString:String = null;
-         this.upsellXML = <data>DeluxeDownload</data>;
          super();
          this.app = app;
          this.mBoard = theBoard;
-         this.mURLRequest = new URLRequest(app.mUpsellLink);
          this.mDialogBox = new DialogBox(app,this.mBoard);
          this.mDialogBox.setVisible(false);
          this.mOptionsButton = app.imageManager.getImageInst(PVZImages.IMAGE_OPTIONS_STANDARDBUTTON);
@@ -113,17 +105,6 @@ package com.popcap.flash.games.pvz.logic.UI
          this.mRestartButton.resize(182,200,156,31);
          font.scale = 0.4;
          hiliteFont.scale = 0.4;
-         this.mUpsellButton = new ImageButtonWidget(this.Menu_Upsell,this);
-         aString = app.stringManager.translateString("[TRY_FULL_VERSION_BUTTON]");
-         this.mUpsellButton.mUpImage = this.MakeButtonImage(aString,font,this.mOptionsButton);
-         this.mUpsellButton.mOverImage = this.MakeButtonImage(aString,hiliteFont,this.mOptionsButton);
-         this.mUpsellButton.mDownImage = this.MakeButtonImage(aString,hiliteFont,this.mOptionsButton);
-         this.mUpsellButton.mDownOffset = aPoint;
-         this.mUpsellButton.mDisabledImage = this.MakeButtonImage(aString,font,this.mOptionsButton);
-         this.mUpsellButton.doFinger = true;
-         this.mUpsellButton.visible = true;
-         this.mUpsellButton.setDisabled(false);
-         this.mUpsellButton.resize(182,232,156,31);
          font.scale = 0.4;
          hiliteFont.scale = 0.4;
          this.mBackToMainButton = new ImageButtonWidget(this.Menu_BackToMain,this);
@@ -190,7 +171,6 @@ package com.popcap.flash.games.pvz.logic.UI
          this.mRestartButton.setDisabled(false);
          this.mBackToGameButton.setDisabled(false);
          this.mBackToMainButton.setDisabled(false);
-         this.mUpsellButton.setDisabled(false);
       }
       
       public function buttonMouseLeave(id:Number) : void
@@ -324,7 +304,6 @@ package com.popcap.flash.games.pvz.logic.UI
                   this.mRestartButton.setDisabled(true);
                   this.mBackToGameButton.setDisabled(true);
                   this.mBackToMainButton.setDisabled(true);
-                  this.mUpsellButton.setDisabled(true);
                }
                break;
             case this.Menu_Restart:
@@ -336,19 +315,7 @@ package com.popcap.flash.games.pvz.logic.UI
                this.mRestartButton.setDisabled(true);
                this.mBackToGameButton.setDisabled(true);
                this.mBackToMainButton.setDisabled(true);
-               this.mUpsellButton.setDisabled(true);
-               break;
-            case this.Menu_Upsell:
-               this.app.adAPI.CustomEvent(this.upsellXML,this.DoUpsell);
-               if(!this.app.adAPI.enabled)
-               {
-                  navigateToURL(this.mURLRequest);
-               }
          }
-      }
-      
-      public function DoUpsell() : void
-      {
       }
    }
 }

@@ -59,8 +59,9 @@ package com.popcap.flash.games.pvz.logic
       private static const SEED_SUNFLOWER:int = 1;
       
       private static const SEED_SNOWPEA:int = 5;
-       
-      
+
+      public static const SEED_POTATOMINE:int = 12;
+
       public var mCursorType:int;
       
       public var mType:int;
@@ -164,6 +165,9 @@ package com.popcap.flash.games.pvz.logic
                break;
             case SEED_LEFTPEATER:
                aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_LEFTFACINGPEASHOOTER);
+               break;
+            case SEED_POTATOMINE:
+               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
          }
          this.mSeedImages[theType] = aPlantImg;
          return aPlantImg;

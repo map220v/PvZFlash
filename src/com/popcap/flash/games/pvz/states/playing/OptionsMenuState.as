@@ -28,7 +28,6 @@ package com.popcap.flash.games.pvz.states.playing
          this.app.widgetManager.addWidget(this.app.mOptionsMenu);
          this.app.widgetManager.setFocus(this.app.mOptionsMenu);
          this.app.widgetManager.addWidget(this.app.mOptionsMenu.mRestartButton);
-         this.app.widgetManager.addWidget(this.app.mOptionsMenu.mUpsellButton);
          this.app.widgetManager.addWidget(this.app.mOptionsMenu.mBackToGameButton);
          this.app.widgetManager.addWidget(this.app.mOptionsMenu.mBackToMainButton);
          this.app.widgetManager.addWidget(this.app.mOptionsMenu.mSoundCheckBox);
@@ -76,7 +75,6 @@ package com.popcap.flash.games.pvz.states.playing
          this.app.musicManager.resumeMusic();
          this.app.widgetManager.removeWidget(this.app.mOptionsMenu);
          this.app.widgetManager.removeWidget(this.app.mOptionsMenu.mRestartButton);
-         this.app.widgetManager.removeWidget(this.app.mOptionsMenu.mUpsellButton);
          this.app.widgetManager.removeWidget(this.app.mOptionsMenu.mBackToGameButton);
          this.app.widgetManager.removeWidget(this.app.mOptionsMenu.mBackToMainButton);
          this.app.widgetManager.removeWidget(this.app.mOptionsMenu.mSoundCheckBox);

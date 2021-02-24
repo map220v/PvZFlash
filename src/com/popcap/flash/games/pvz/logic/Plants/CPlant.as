@@ -23,7 +23,8 @@ package com.popcap.flash.games.pvz.logic.Plants
       public static const STATE_CHOMPER_BITING:int = 8;
       
       public static const PHASE_ZOMBIE_BURNED:int = 2;
-      
+
+      //TODO: take all SEED_** values from CPlant.as
       public static const SEED_PEASHOOTER:int = 0;
       
       public static const STATE_BOWLING_DOWN:int = 14;
@@ -171,8 +172,11 @@ package com.popcap.flash.games.pvz.logic.Plants
       public static const RENDER_LAYER_ZOMBIE:int = RENDER_LAYER_LAWN + 3000;
       
       public static const RENDER_LAYER_UI_BOTTOM:int = 100000;
-       
-      
+
+      public static const STATE_POTATO_PRIMED:int = 20;
+
+      public static const SEED_POTATOMINE:int = 12;
+
       public var mPlantMaxHealth:int;
       
       public var mFrameLength:int;
@@ -274,6 +278,9 @@ package com.popcap.flash.games.pvz.logic.Plants
          else if(this.mSeedType == SEED_LEFTPEATER)
          {
             aRect = new Rectangle(0,mY,mX,mHeight);
+         }
+         else if(this.mSeedType == SEED_POTATOMINE){
+            aRect = new Rectangle(mX,mY,51,mHeight);
          }
          else
          {
