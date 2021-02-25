@@ -202,7 +202,7 @@
 </track>
 <track>
 <name>PotatoMine_rock4</name>
-<t><x>26.1</x><y>42.3</y><sx>0.399</sx><sy>0.399</sy><i>IMAGE_REANIM_POTATOMINE_ROCK4</i></t>
+<t><x>26.1</x><y>42.3</y><sx>0.399</sx><sy>0.399</sy><f>0</f><i>IMAGE_REANIM_POTATOMINE_ROCK4</i></t>
 <t><y>42.6</y></t>
 <t><y>43</y></t>
 <t><y>42.6</y></t>
@@ -242,7 +242,7 @@
 </track>
 <track>
 <name>PotatoMine_rock2</name>
-<t><x>16.1</x><y>41.7</y><sx>0.472</sx><sy>0.472</sy><i>IMAGE_REANIM_POTATOMINE_ROCK2</i></t>
+<t><x>16.1</x><y>41.7</y><sx>0.472</sx><sy>0.472</sy><f>0</f><i>IMAGE_REANIM_POTATOMINE_ROCK2</i></t>
 <t><y>40.4</y></t>
 <t><y>41.7</y></t>
 <t><y>40.4</y></t>
@@ -322,7 +322,7 @@
 </track>
 <track>
 <name>PotatoMine_stem</name>
-<t><x>13.7</x><y>38.5</y><sx>0.540</sx><sy>0.540</sy><i>IMAGE_REANIM_POTATOMINE_STEM</i></t>
+<t><x>13.7</x><y>38.5</y><sx>0.540</sx><sy>0.540</sy><f>0</f><i>IMAGE_REANIM_POTATOMINE_STEM</i></t>
 <t></t>
 <t></t>
 <t></t>
@@ -642,7 +642,7 @@
 </track>
 <track>
 <name>anim_light</name>
-<t><x>19.0</x><y>27.3</y><sx>0.540</sx><sy>0.540</sy><i>IMAGE_REANIM_POTATOMINE_LIGHT1</i></t>
+<t><x>19.0</x><y>27.3</y><sx>0.540</sx><sy>0.540</sy><f>0</f><i>IMAGE_REANIM_POTATOMINE_LIGHT1</i></t>
 <t><y>27.8</y></t>
 <t><y>28.4</y></t>
 <t><y>28.9</y></t>
@@ -722,7 +722,7 @@
 </track>
 <track>
 <name>PotatoMine_rock6</name>
-<t><x>9.9</x><y>44.6</y><sx>0.540</sx><sy>0.540</sy><i>IMAGE_REANIM_POTATOMINE_ROCK6</i></t>
+<t><x>9.9</x><y>44.6</y><sx>0.540</sx><sy>0.540</sy><f>0</f><i>IMAGE_REANIM_POTATOMINE_ROCK6</i></t>
 <t><y>45.3</y></t>
 <t><y>44.6</y></t>
 <t><y>45.3</y></t>
@@ -762,7 +762,7 @@
 </track>
 <track>
 <name>PotatoMine_rock1</name>
-<t><x>18.1</x><y>46.3</y><sx>0.540</sx><sy>0.540</sy><i>IMAGE_REANIM_POTATOMINE_ROCK1</i></t>
+<t><x>18.1</x><y>46.3</y><sx>0.540</sx><sy>0.540</sy><f>0</f><i>IMAGE_REANIM_POTATOMINE_ROCK1</i></t>
 <t></t>
 <t><y>46.9</y></t>
 <t></t>
@@ -802,7 +802,7 @@
 </track>
 <track>
 <name>PotatoMine_rock3</name>
-<t><x>28.7</x><y>43.5</y><sx>0.540</sx><sy>0.540</sy><i>IMAGE_REANIM_POTATOMINE_ROCK3</i></t>
+<t><x>28.7</x><y>43.5</y><sx>0.540</sx><sy>0.540</sy><f>0</f><i>IMAGE_REANIM_POTATOMINE_ROCK3</i></t>
 <t><y>42.9</y></t>
 <t><y>42.2</y></t>
 <t><y>42.9</y></t>
@@ -842,7 +842,7 @@
 </track>
 <track>
 <name>PotatoMine_rock5</name>
-<t><x>21.0</x><y>46.6</y><sx>0.540</sx><sy>0.540</sy><i>IMAGE_REANIM_POTATOMINE_ROCK5</i></t>
+<t><x>21.0</x><y>46.6</y><sx>0.540</sx><sy>0.540</sy><f>0</f><i>IMAGE_REANIM_POTATOMINE_ROCK5</i></t>
 <t><y>46</y></t>
 <t><y>46.6</y></t>
 <t><y>46</y></t>
