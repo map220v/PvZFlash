@@ -817,7 +817,7 @@ package com.popcap.flash.games.pvz.logic
                aOffsetX = aOffsetX + 3;
                break;
             case SEED_POTATOMINE:
-               aPlantImg = this.app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
+               aPlantImg = this.app.imageManager.getImageInst(PVZImages.IMAGE_POTATOMINE);
                aOffsetX = aOffsetX + 3;
          }
          bufferG.pushState();

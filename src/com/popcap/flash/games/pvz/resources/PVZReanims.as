@@ -60,8 +60,9 @@ package com.popcap.flash.games.pvz.resources
       public static const REANIM_ZOMBIE_HAND:String = "REANIM_ZOMBIE_HAND";
       
       public static const REANIM_FUMESHROOM:String = "REANIM_FUMESHROOM";
-       
-      
+
+      public static const REANIM_POTATOMINE:String = "REANIM_POTATOMINE";
+
       public function PVZReanims()
       {
          super();

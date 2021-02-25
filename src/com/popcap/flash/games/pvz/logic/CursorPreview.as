@@ -212,7 +212,7 @@ package com.popcap.flash.games.pvz.logic
                aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_LEFTFACINGPEASHOOTER);
                break;
             case SEED_POTATOMINE:
-               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
+               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_POTATOMINE);
          }
          aPlantImg.useColor = true;
          if(theType != SEED_EXPLODE_O_NUT)

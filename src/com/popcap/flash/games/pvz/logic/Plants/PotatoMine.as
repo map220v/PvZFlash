@@ -50,11 +50,9 @@ public class PotatoMine extends CPlant
         mEatenFlashCountdown = 0;
         mWidth = 54;
         mHeight = 54;
-        mReanimationType = REANIM_CHERRYBOMB;
-        mBodyReanimation = app.reanimator.createReanimation(PVZReanims.REANIM_CHERRYBOMB);
+        mBodyReanimation = app.reanimator.createReanimation(PVZReanims.REANIM_POTATOMINE);
         mBodyReanimation.loopType = Reanimation.LOOP_TYPE_ALWAYS;
         mBodyReanimation.currentTrack = "anim_idle";
-        mLaunchCounter = TodCommon.RandRangeInt(0,15);
         mPlantMaxHealth = mPlantHealth;
     }
 
@@ -84,7 +82,7 @@ public class PotatoMine extends CPlant
         {
             this.PotatoArmedCountdown--
             if(PotatoArmedCountdown == 0){
-                mBodyReanimation.currentTrack = "anim_explode";
+                mBodyReanimation.currentTrack = "anim_rise";
                 app.foleyManager.playFoley(PVZFoleyType.REVERSE_EXPLOSION);
                 mState = STATE_POTATO_PRIMED
             }

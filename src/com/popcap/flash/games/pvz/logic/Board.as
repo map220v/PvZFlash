@@ -870,7 +870,7 @@ import com.popcap.flash.games.pvz.logic.Plants.Wallnut;
                aReanimType = PVZReanims.REANIM_PEASHOOTER;
                break;
             case SEED_POTATOMINE:
-               aReanimType = PVZReanims.REANIM_CHERRYBOMB;
+               aReanimType = PVZReanims.REANIM_POTATOMINE;
          }
          return aReanimType;
       }

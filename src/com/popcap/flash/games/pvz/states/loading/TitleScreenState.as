@@ -14,7 +14,10 @@ package com.popcap.flash.games.pvz.states.loading
    import com.popcap.flash.games.pvz.PVZApp;
    import com.popcap.flash.games.pvz.resources.PVZImages;
    import com.popcap.flash.games.pvz.resources.PVZReanims;
-   import flash.geom.Matrix;
+import com.popcap.flash.games.pvz.resources.loaders.PVZImageLoader;
+import com.popcap.flash.games.pvz.resources.loaders.PVZReanimLoader;
+
+import flash.geom.Matrix;
    import flash.utils.ByteArray;
    
    public class TitleScreenState implements IState, IButtonListener
@@ -168,7 +171,8 @@ package com.popcap.flash.games.pvz.states.loading
          this.largeStartButton.resize(0,0,this.app.screenWidth,this.app.screenHeight);
          this.app.widgetManager.addWidget(this.startButton);
          this.app.resourceManager.loadResourceLibrary("resources.swf");
-         //this.app.resourceManager.loadResourceLibrary("resourcesFull.swf");
+         PVZImageLoader.init(this.app);
+         PVZReanimLoader.init(this.app);
       }
       
       public function update() : void

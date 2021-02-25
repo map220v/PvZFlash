@@ -1222,7 +1222,8 @@ package com.popcap.flash.games.pvz.resources
       public static const IMAGE_ZOMBIENOTEBLACK3:String = "IMAGE_ZOMBIENOTEBLACK3";
       
       public static const IMAGE_REANIM_SELECTORSCREEN_VASEBREAKER_BUTTON:String = "IMAGE_REANIM_SELECTORSCREEN_VASEBREAKER_BUTTON";
-       
+
+      public static const IMAGE_POTATOMINE:String = "IMAGE_POTATOMINE";
       
       public function PVZImages()
       {

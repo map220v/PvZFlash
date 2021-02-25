@@ -419,7 +419,7 @@ import com.popcap.flash.games.pvz.renderables.ParticleRenderable;
                aOffsetX = aOffsetX + 4;
                break;
             case SEED_POTATOMINE:
-               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
+               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_POTATOMINE);
                aOffsetX = aOffsetX + 4;
          }
          bufferG.pushState();

@@ -9,8 +9,8 @@ public class PVZFlash extends PVZApp
          super();
          appWidth = stage.stageWidth;
          appHeight = stage.stageHeight;
-         screenWidth = 540;
-         screenHeight = 405;
+         screenWidth = 540;//800 - 1.481481481481481
+         screenHeight = 405;//600 - 1.481481481481481
          init();
       }
    }

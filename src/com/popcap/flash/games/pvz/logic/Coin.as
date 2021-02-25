@@ -789,7 +789,7 @@ package com.popcap.flash.games.pvz.logic
                aOffsetY = aOffsetY + 5;
                break;
             case SEED_POTATOMINE:
-               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_CHERRYBOMB);
+               aPlantImg = app.imageManager.getImageInst(PVZImages.IMAGE_POTATOMINE);
                aOffsetX = aOffsetX + 2;
                aOffsetY = aOffsetY + 5;
          }
